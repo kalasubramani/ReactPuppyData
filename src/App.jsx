@@ -8,17 +8,20 @@ function App() {
   const [puppies, setPuppies] = useState(puppyList);
   //useState to hold selectedPup
   const [selectedPupId, setSelectedPupId] = useState(null);
+  let tricks = "None";
 
   //  get details of selectedPup
   const selectedPup = puppies.find((pup) => {
     return pup.id === selectedPupId;
   });
 
-  const tricks = selectedPup.tricks
-    .map((t) => {
-      return t.title;
-    })
-    .join(", ");
+  if (selectedPup) {
+    tricks = selectedPup.tricks
+      .map((t) => {
+        return t.title;
+      })
+      .join(", ");
+  }
 
   return (
     <>
